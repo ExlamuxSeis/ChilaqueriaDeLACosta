@@ -15,61 +15,71 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container">
             <a href="#" class="navbar-brand">
-                <img src="DeLACosta.png" class="logo-nav  imagen-con-contorno" width="100" alt="Logo">
+                <img src="DeLACosta.png" class="logo-nav imagen-con-contorno" alt="Logo">
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto gap-4">
+                <ul class="navbar-nav ms-auto gap-lg-4 text-center mt-3 mt-lg-0">
                     <li class="nav-item"><a href="#menu" class="nav-link">CHILAQUILES</a></li>
                     <li class="nav-item"><a href="#especialidades" class="nav-link">ESPECIALIDADES</a></li>
                     <li class="nav-item"><a href="#bebidas" class="nav-link">BEBIDAS</a></li>
-                    <li class="nav-item"><a href="#contacto" class="nav-link btn-order">PIDE AQUÍ</a></li>
+                    <li class="nav-item mt-2 mt-lg-0">
+                        <a href="https://wa.me/527447402325?text=¡Hola!%20Vengo%20de%20la%20página%20web%20y%20me%20gustaría%20hacer%20un%20pedido." 
+                        target="_blank" 
+                        class="nav-link btn-order mx-auto mx-lg-0 fw-black">
+                        PIDE AQUÍ
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="hero">
+    <header id="home" class="hero d-flex align-items-center">
         <div class="hero-overlay"></div>
-        <div class="container hero-content text-center">
-            <img src="DeLACosta.png" class="hero-logo mb-4 imagen-contorno" alt="Chilaquería Logo">
-            <h1 class="display-1 fw-black text-uppercase">Chilaquería<br><span class="text-orange">De LACosta</span></h1>
-            <p class="fs-4 fw-light mb-5 letter-spacing-2"> Crema, queso y cebolla • Salsa a elegir</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#menu" class="btn btn-orange btn-lg rounded-0 px-5 py-3">VER MENÚ</a>
+        <div class="container hero-content text-center py-5">
+            <img src="DeLACosta.png" class="hero-logo mb-4 imagen-contorno img-fluid" alt="Chilaquería Logo">
+            <h1 class="display-title fw-black text-uppercase">
+                Chilaquería<br><span class="text-orange">De LACosta</span>
+            </h1>
+            <p class="fs-5 fs-lg-4 fw-light mb-4 mb-lg-5 letter-spacing-2 text-white px-3">
+                Crema, queso y cebolla • Salsa a elegir
+            </p>
+            <div class="d-grid d-sm-flex justify-content-sm-center gap-3 px-4 px-sm-0">
+                <a href="#menu" class="btn btn-orange btn-lg rounded-0 px-5 py-3 fw-bold">VER MENÚ</a>
             </div>
         </div>
     </header>
 
-    <section class="marquee-section bg-orange text-black overflow-hidden py-3">
+    <section class="marquee-section bg-orange text-black overflow-hidden py-2 py-lg-3">
         <div class="marquee-container">
-            <div class="marquee-content fw-black fs-2 text-uppercase italic">
-                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
-                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
-                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+            <div class="marquee-content fw-black text-uppercase italic">
+                <span>VERDE • ROJA • MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+                <span>VERDE • ROJA • MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+                <span>VERDE • ROJA • MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
             </div>
         </div>
     </section>
 
-    <section id="menu" class="py-5">
-        <div class="container py-5">
-            <div class="header-box mb-5">
-                <h2 class="section-title">CHILAQUILES</h2>
-                <div class="title-line"></div>
+    <section id="menu" class="py-5 bg-black">
+        <div class="container py-lg-5">
+            <div class="header-box mb-4 mb-lg-5 text-center text-lg-start px-3">
+                <h2 class="section-title fw-black">CHILAQUILES</h2>
+                <div class="title-line mx-auto mx-lg-0"></div>
             </div>
             
-            <div class="row g-4">
-                <div v-for="(item, i) in chilaquiles" :key="i" class="col-md-6 col-lg-4">
-                    <div class="menu-item-card">
+            <div class="row g-3 g-lg-4 px-3 px-lg-0">
+                <div v-for="(item, i) in chilaquiles" :key="i" class="col-12 col-md-6 col-lg-4">
+                    <div class="menu-item-card h-100">
                         <div class="img-container">
-                            <img :src="item.img" class="img-fluid" alt="">
+                            <img :src="item.img" class="img-fluid w-100" alt="">
                             <div class="price-tag">${{ item.price }}</div>
                         </div>
-                        <div class="p-4 border-start border-orange border-4 bg-dark-soft">
-                            <h4 class="fw-bold text-uppercase mb-1">{{ item.name }}</h4>
-                            <p class="text-muted small mb-0">{{ item.description || 'Incluye totopos crujientes y proteína a elegir.' }}</p>
+                        <div class="p-3 p-lg-4 border-start border-orange border-4 bg-dark-grey">
+                            <h4 class="fw-bold text-uppercase mb-1 fs-5 fs-lg-4">{{ item.name }}</h4>
+                            <p class="text-muted small mb-0">{{ item.description || 'Incluye totopos crujientes y proteína.' }}</p>
                         </div>
                     </div>
                 </div>
@@ -78,20 +88,20 @@
     </section>
 
     <section id="especialidades" class="py-5 bg-black-gradient">
-        <div class="container py-5">
-            <div class="header-box mb-5 text-end">
-                <h2 class="section-title">ESPECIALIDADES</h2>
-                <div class="title-line ms-auto"></div>
+        <div class="container py-lg-5">
+            <div class="header-box mb-5 text-center text-lg-end px-3">
+                <h2 class="section-title fw-black">ESPECIALIDADES</h2>
+                <div class="title-line mx-auto ms-lg-auto me-lg-0"></div>
             </div>
 
-            <div class="row g-4">
-                <div v-for="(item, i) in especialidades" :key="i" class="col-md-6">
-                    <div class="special-card d-flex align-items-center">
-                        <img :src="item.img" class="special-img" alt="">
-                        <div class="ps-4">
-                            <h3 class="text-orange fw-black mb-0">{{ item.name }}</h3>
-                            <p class="text-white-50 mb-2">{{ item.subtitle }}</p>
-                            <span class="fs-4 fw-bold">${{ item.price }}</span>
+            <div class="row g-3 g-lg-4 px-3 px-lg-0">
+                <div v-for="(item, i) in especialidades" :key="i" class="col-12 col-lg-6">
+                    <div class="special-card d-flex flex-column flex-sm-row align-items-center p-3 h-100">
+                        <img :src="item.img" class="special-img mb-3 mb-sm-0" alt="">
+                        <div class="ps-sm-4 text-center text-sm-start">
+                            <h3 class="text-orange fw-black mb-0 fs-4 fs-lg-3">{{ item.name }}</h3>
+                            <p class="text-white-50 mb-2 small">{{ item.subtitle }}</p>
+                            <span class="fs-4 fw-bold text-white">${{ item.price }}</span>
                         </div>
                     </div>
                 </div>
@@ -99,28 +109,51 @@
         </div>
     </section>
 
-    <footer id="contacto" class="footer border-top border-orange border-4">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-4 text-center text-lg-start">
-                    <img src="DeLACosta.png" width="180" class="mb-4 imagen-con-contorno" alt="">
-                    <p class="text-muted">La auténtica experiencia de chilaquiles en la costa. Calidad, sabor y tradición en cada bocado.</p>
+<footer id="contacto" class="footer border-top border-orange border-4 bg-black">
+    <div class="container py-5 px-4 px-lg-0">
+        <div class="row g-5 align-items-start">
+            
+            <div class="col-12 col-lg-4 text-center text-lg-start">
+                <img src="DeLACosta.png" width="150" class="mb-4 imagen-con-contorno" alt="Logo">
+                <p class="text-white fw-bold mb-1">⏰ HORARIO</p>
+                <p class="text-muted mb-4">8 AM a 8 PM</p>
+                
+                <p class="text-white fw-bold mb-1">🍽️ SERVICIOS</p>
+                <p class="text-muted small">A domicilio (cerca), para llevar y comer aquí.</p>
+            </div>
+
+            <div class="col-12 col-lg-4 text-center">
+                <h5 class="text-orange fw-bold mb-4">PIDE AQUÍ</h5>
+                <div class="mb-3">
+                    <a href="tel:7447402325" class="text-white text-decoration-none d-block mb-2">☎️ 744 740 2325</a>
+                    <a href="https://w.app/chilaqueriadelacosta" target="_blank" class="btn btn-orange btn-sm rounded-0 fw-bold">
+                        📲 WHATSAPP DIRECTO
+                    </a>
                 </div>
-                <div class="col-lg-4 text-center">
-                    <h5 class="text-orange fw-bold mb-4">SÍGUENOS</h5>
-                    <div class="d-flex justify-content-center gap-4 fs-3">
-                        <p>📘 @chilaqueriadelacosta</p>
-                    </div>
-                    <img src="qr-placeholder.png" alt="QR" class="qr-code mt-3">
-                </div>
-                <div class="col-lg-4 text-center text-lg-end">
-                    <h5 class="text-orange fw-bold mb-4">UBICACIÓN</h5>
-                    <p>Acapulco, Guerrero, México</p>
-                    <p class="text-muted small">Chilaquería De La Costa • 2024</p>
+                <div class="mt-4">
+                    <p class="text-white small mb-2">VER MENÚ DIGITAL</p>
+                    <img src="qr-placeholder.png" alt="QR Menú" class="qr-code">
                 </div>
             </div>
+
+            <div class="col-12 col-lg-4 text-center text-lg-end">
+                <h5 class="text-orange fw-bold mb-4 text-uppercase">Ubicación</h5>
+                <p class="text-white mb-1">📍 Jardín del Puerto</p>
+                <p class="text-muted small mb-3">(frente a Palacio Federal)</p>
+                
+                <p class="text-orange small fw-bold mb-4">
+                    Entrada Jardín del Puerto<br>a mano izquierda.
+                </p>
+                
+                <div class="pt-3 border-top border-secondary border-opacity-25">
+                    <p class="text-white-50 mb-0">Acapulco, Guerrero, México</p>
+                    <p class="text-muted mb-0" style="font-size: 0.7rem;">Chilaquería De La Costa • 2026</p>
+                </div>
+            </div>
+
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/app.js"></script>

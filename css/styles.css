@@ -10,6 +10,30 @@ body {
     background-color: var(--black);
     color: var(--white);
     letter-spacing: 0.5px;
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+/* 1. Navegación suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 2. Compensar la altura de la Navbar fija */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
+/* 3. Evitar que el menú móvil se quede abierto al hacer clic */
+.navbar-collapse {
+    transition: all 0.3s ease;
+}
+
+/* 4. Mejora del QR (El invertido lo hace ver raro si tiene fondo blanco) */
+.qr-code {
+    width: 100px;
+    filter: none; /* Quita el invert si vas a usar un QR real con fondo blanco */
+    border: 3px solid var(--orange);
+    background: white;
+    padding: 5px;
 }
 
 /* Tipografías Especiales */
@@ -17,11 +41,17 @@ body {
 .text-orange { color: var(--orange); }
 .letter-spacing-2 { letter-spacing: 2px; }
 
+/* Títulos que se ajustan solos (Mínimo 2.5rem, Máximo 5rem) */
+.display-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1;
+}
+
 /* Navbar Moderna */
 .navbar {
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(15px);
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     transition: all 0.3s;
 }
 
@@ -36,15 +66,15 @@ body {
     padding: 8px 20px !important;
     border-radius: 0;
     color: white !important;
+    max-width: fit-content;
 }
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background: url('https://images.unsplash.com/photo-1644704570410-449e0839806c?q=80&w=2070') center/cover no-repeat;
-    display: flex;
-    align-items: center;
     position: relative;
+    padding-top: 80px; /* Espacio para el nav fixed */
 }
 
 .hero-overlay {
@@ -56,15 +86,13 @@ body {
 .hero-content { position: relative; z-index: 2; }
 
 /* Títulos de Sección Estilo Menú */
-.header-box { position: relative; }
 .section-title {
-    font-size: 4rem;
+    font-size: clamp(2.2rem, 6vw, 4rem);
     font-weight: 900;
-    margin-bottom: 0;
 }
 .title-line {
-    width: 100px;
-    height: 8px;
+    width: 80px;
+    height: 6px;
     background: var(--orange);
 }
 
@@ -74,8 +102,8 @@ body {
     transition: transform 0.3s ease;
 }
 
-.menu-item-card:hover {
-    transform: translateY(-10px);
+@media (min-width: 992px) {
+    .menu-item-card:hover { transform: translateY(-10px); }
 }
 
 .img-container {
@@ -97,8 +125,8 @@ body {
     background: var(--orange);
     color: black;
     font-weight: 900;
-    padding: 10px 20px;
-    font-size: 1.5rem;
+    padding: 8px 15px;
+    font-size: 1.3rem;
 }
 
 /* Especialidades */
@@ -109,18 +137,11 @@ body {
 .special-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,107,0,0.2);
-    padding: 20px;
-    transition: 0.3s;
-}
-
-.special-card:hover {
-    border-color: var(--orange);
-    background: rgba(255,107,0,0.05);
 }
 
 .special-img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 50%;
     border: 3px solid var(--orange);
@@ -129,53 +150,29 @@ body {
 /* Marquee de Salsas */
 .marquee-section {
     background-color: #ff6b00;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    display: flex;
-    align-items: center;
+    border-y: 2px solid black;
 }
 
 .marquee-container {
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: 0;
 }
 
 .marquee-content {
     display: flex;
     flex-shrink: 0;
     white-space: nowrap;
-    gap: 0;
-    /* La animación se aplica aquí */
     animation: scroll-loop 20s linear infinite;
-    will-change: transform;
+    font-size: clamp(1rem, 3vw, 1.8rem); /* Texto del marquee responsivo */
 }
 
-/* El truco: movemos el contenido de 0 a -33.33% 
-   (porque pusimos 3 bloques de texto iguales) */
 @keyframes scroll-loop {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        transform: translate3d(-33.333%, 0, 0);
-    }
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-33.333%, 0, 0); }
 }
 
-/* Estilo de la fuente para que se vea "Street Food" */
-.italic {
-    font-style: italic;
-}
-
-.fw-black {
-    font-weight: 900;
-}
-
-/* Pausar al pasar el mouse (opcional, se ve muy Pro) */
-.marquee-container:hover .marquee-content {
-    animation-play-state: paused;
-}
+.italic { font-style: italic; }
 
 /* Botones */
 .btn-orange {
@@ -193,38 +190,111 @@ body {
 }
 
 .qr-code {
-    width: 120px;
-    filter: invert(1); /* Si el fondo es negro, invierte el QR */
-    border: 5px solid var(--orange);
+    width: 100px;
+    filter: invert(1);
+    border: 3px solid var(--orange);
 }
 
+/* Filtros de imagen con contorno optimizados */
 .imagen-con-contorno {
-            /* ESTA ES LA MAGIA */
-            /*drop-shadow(X Y DESVANECIMIENTO COLOR) */
-            filter: 
-                drop-shadow(2px 0 0 white) 
-                drop-shadow(-2px 0 0 white) 
-                drop-shadow(0 2px 0 white) 
-                drop-shadow(0 -2px 0 white);
-            
-            /* Opcional: si quieres un efecto más suave como un resplandor, 
-               usa un solo drop-shadow con desvanecimiento: */
-            /* filter: drop-shadow(0 0 10px white); */
+    filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+    max-width: 120px; 
+}
 
-            max-width: 180px; /* Ajusta el tamaño de tu imagen */
-        }
 .imagen-contorno {
-            /* ESTA ES LA MAGIA */
-            /*drop-shadow(X Y DESVANECIMIENTO COLOR) */
-            filter: 
-                drop-shadow(2px 0 0 white) 
-                drop-shadow(-2px 0 0 white) 
-                drop-shadow(0 2px 0 white) 
-                drop-shadow(0 -2px 0 white);
-            
-            /* Opcional: si quieres un efecto más suave como un resplandor, 
-               usa un solo drop-shadow con desvanecimiento: */
-            /* filter: drop-shadow(0 0 10px white); */
+    filter: drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+    max-width: 100%; /* Responsivo por defecto */
+    height: auto;
+}
 
-            max-width: 300px; /* Ajusta el tamaño de tu imagen */
-        }
+/* Ajuste de logo en el hero para móvil */
+.hero-logo {
+    max-width: 200px;
+}
+
+@media (min-width: 992px) {
+    .hero-logo { max-width: 300px; }
+}
+
+/* --- HOVER CHILAQUILES --- */
+.img-container {
+    position: relative;
+    overflow: hidden; /* Mantiene el zoom dentro del recuadro */
+}
+
+.img-container img {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.price-tag {
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Acciones al pasar el mouse por la tarjeta */
+.menu-item-card:hover .img-container img {
+    transform: scale(1.1); /* Zoom suave */
+    filter: brightness(0.7); /* Oscurece la imagen para resaltar el precio */
+}
+
+.menu-item-card:hover .price-tag {
+    background-color: #fff !important; /* El precio resalta en blanco */
+    color: var(--orange) !important;
+    transform: scale(1.1) translateX(-5px); /* Se asoma un poco más */
+}
+
+.menu-item-card:hover {
+    box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15); /* Sombra sutil naranja */
+}
+
+/* --- HOVER ESPECIALIDADES --- */
+.special-card {
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 107, 0, 0.1);
+}
+
+.special-img {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
+}
+
+/* Acciones al pasar el mouse */
+.special-card:hover {
+    background: rgba(255, 107, 0, 0.05) !important; /* Fondo sutil naranja */
+    border-color: var(--orange);
+    transform: translateY(-5px); /* Sube ligeramente */
+}
+
+.special-card:hover .special-img {
+    transform: scale(1.1) rotate(5deg); /* Crece y rota un poco */
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.5); /* Brillo neón naranja */
+    border-color: #fff; /* El borde del círculo cambia a blanco */
+}
+
+.special-card:hover h3 {
+    letter-spacing: 1px; /* El título se expande suavemente */
+    transition: all 0.3s ease;
+}
+
+/* Estilo para los enlaces de contacto en el footer */
+footer a {
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--orange) !important;
+}
+
+/* Ajuste del QR para que no sea gigante en móvil */
+.qr-code {
+    width: 100px;
+    filter: invert(1);
+    border: 2px solid var(--orange);
+    padding: 5px;
+    background: white; /* Para que el QR sea legible */
+}
+
+/* Un toque extra para el botón del footer */
+footer .btn-orange {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+}
