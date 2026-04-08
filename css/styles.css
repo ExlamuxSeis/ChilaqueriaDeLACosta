@@ -1,104 +1,230 @@
 :root {
-    --red: #e6392b;
     --orange: #ff6b00;
+    --black: #0a0a0a;
+    --dark-grey: #1a1a1a;
+    --white: #f5f5f5;
 }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: #0f0f0f;
-    color: #f8f8f8;
-    overflow-x: hidden;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    letter-spacing: 0.5px;
 }
 
-/* Navbar 3D */
+/* Tipografías Especiales */
+.fw-black { font-weight: 900; }
+.text-orange { color: var(--orange); }
+.letter-spacing-2 { letter-spacing: 2px; }
+
+/* Navbar Moderna */
 .navbar {
-    background: rgba(15, 15, 15, 0.95);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(15px);
+    padding: 1rem 0;
+    transition: all 0.3s;
 }
 
-.logo-3d {
-    filter: drop-shadow(0 15px 25px rgba(255,107,0,0.5));
-    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.logo-3d:hover {
-    transform: rotateY(25deg) rotateX(15deg) scale(1.1);
+.nav-link {
+    font-weight: 700;
+    color: var(--white) !important;
+    font-size: 0.9rem;
 }
 
-/* Hero 3D */
+.btn-order {
+    background: var(--orange);
+    padding: 8px 20px !important;
+    border-radius: 0;
+    color: white !important;
+}
+
+/* Hero Section */
 .hero {
     height: 100vh;
-    min-height: 680px;
-    background: linear-gradient(135deg, rgba(15,15,15,0.85), rgba(230,57,43,0.3)), 
-                url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+    background: url('https://images.unsplash.com/photo-1644704570410-449e0839806c?q=80&w=2070') center/cover no-repeat;
+    display: flex;
+    align-items: center;
     position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--black) 10%, rgba(0,0,0,0.4) 100%);
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+/* Títulos de Sección Estilo Menú */
+.header-box { position: relative; }
+.section-title {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+.title-line {
+    width: 100px;
+    height: 8px;
+    background: var(--orange);
+}
+
+/* Tarjetas de Menú */
+.menu-item-card {
+    background: var(--dark-grey);
+    transition: transform 0.3s ease;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-10px);
+}
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.price-tag {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--orange);
+    color: black;
+    font-weight: 900;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+}
+
+/* Especialidades */
+.bg-black-gradient {
+    background: linear-gradient(180deg, #0a0a0a 0%, #151515 100%);
+}
+
+.special-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,107,0,0.2);
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.special-card:hover {
+    border-color: var(--orange);
+    background: rgba(255,107,0,0.05);
+}
+
+.special-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--orange);
+}
+
+/* Marquee de Salsas */
+.marquee-section {
+    background-color: #ff6b00;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     align-items: center;
 }
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(255,107,0,0.2) 0%, transparent 70%);
-    animation: pulse-glow 8s infinite ease-in-out;
-}
-.hero-logo {
-    animation: float-3d 6s ease-in-out infinite;
-    filter: drop-shadow(30px 30px 40px rgba(255,107,0,0.6));
-}
-@keyframes float-3d {
-    0%, 100% { transform: translateY(0) rotateY(0deg); }
-    50% { transform: translateY(-25px) rotateY(15deg); }
-}
-@keyframes pulse-glow {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
 
-.section-title {
-    font-size: 3.2rem;
-    font-weight: 900;
-    letter-spacing: -3px;
-    background: linear-gradient(90deg, #ff6b00, #e6392b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Tarjetas 3D */
-.menu-card {
-    perspective: 1500px;
-}
-.card-inner {
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform-style: preserve-3d;
-    border-radius: 20px;
+.marquee-container {
+    display: flex;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    user-select: none;
+    gap: 0;
 }
-.menu-card:hover .card-inner {
-    transform: rotateY(18deg) rotateX(12deg) scale(1.05);
+
+.marquee-content {
+    display: flex;
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 0;
+    /* La animación se aplica aquí */
+    animation: scroll-loop 20s linear infinite;
+    will-change: transform;
 }
-.card-img {
-    height: 240px;
-    object-fit: cover;
+
+/* El truco: movemos el contenido de 0 a -33.33% 
+   (porque pusimos 3 bloques de texto iguales) */
+@keyframes scroll-loop {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-33.333%, 0, 0);
+    }
 }
-.price {
-    font-size: 2rem;
+
+/* Estilo de la fuente para que se vea "Street Food" */
+.italic {
+    font-style: italic;
+}
+
+.fw-black {
     font-weight: 900;
+}
+
+/* Pausar al pasar el mouse (opcional, se ve muy Pro) */
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* Botones */
+.btn-orange {
+    background: var(--orange);
+    border: none;
+    color: white;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-orange:hover {
+    background: white;
     color: var(--orange);
-    text-shadow: 0 0 20px rgba(255,107,0,0.5);
 }
 
-/* Animaciones Vue 3D */
-.fade-3d-enter-active, .stagger-enter-active {
-    animation: fade3d 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-@keyframes fade3d {
-    0% { opacity: 0; transform: perspective(1000px) rotateX(60deg) translateY(60px); }
-    100% { opacity: 1; transform: perspective(1000px) rotateX(0) translateY(0); }
+.qr-code {
+    width: 120px;
+    filter: invert(1); /* Si el fondo es negro, invierte el QR */
+    border: 5px solid var(--orange);
 }
 
-/* Footer */
-.footer {
-    background: #111;
-}
+.imagen-con-contorno {
+            /* ESTA ES LA MAGIA */
+            /*drop-shadow(X Y DESVANECIMIENTO COLOR) */
+            filter: 
+                drop-shadow(2px 0 0 white) 
+                drop-shadow(-2px 0 0 white) 
+                drop-shadow(0 2px 0 white) 
+                drop-shadow(0 -2px 0 white);
+            
+            /* Opcional: si quieres un efecto más suave como un resplandor, 
+               usa un solo drop-shadow con desvanecimiento: */
+            /* filter: drop-shadow(0 0 10px white); */
+
+            max-width: 180px; /* Ajusta el tamaño de tu imagen */
+        }
+.imagen-contorno {
+            /* ESTA ES LA MAGIA */
+            /*drop-shadow(X Y DESVANECIMIENTO COLOR) */
+            filter: 
+                drop-shadow(2px 0 0 white) 
+                drop-shadow(-2px 0 0 white) 
+                drop-shadow(0 2px 0 white) 
+                drop-shadow(0 -2px 0 white);
+            
+            /* Opcional: si quieres un efecto más suave como un resplandor, 
+               usa un solo drop-shadow con desvanecimiento: */
+            /* filter: drop-shadow(0 0 10px white); */
+
+            max-width: 300px; /* Ajusta el tamaño de tu imagen */
+        }

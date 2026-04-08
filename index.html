@@ -5,67 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chilaquería De La Costa • ACA • MX</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    
     <link rel="stylesheet" href="css/styles.css">
-    
-    <style>
-        body { background-color: #0f0f0f; color: white; }
-        .navbar { background-color: rgba(15,15,15,0.95); }
-        .hero { padding: 100px 0; background: #1a1a1a; }
-        .bg-black { background-color: black; }
-        .footer { background-color: #111; padding: 50px 0; }
-        .btn-orange { background-color: #ff6b00; color: white; border: none; }
-        .btn-orange:hover { background-color: #e65c00; color: white; }
-    </style>
 </head>
 <body id="app">
 
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top" id="navbar">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container">
             <a href="#" class="navbar-brand">
-                <img src="DeLACosta_.png" class="logo-3d" width="130" alt="">
+                <img src="DeLACosta.png" class="logo-nav  imagen-con-contorno" width="100" alt="Logo">
             </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navMenu">
                 <ul class="navbar-nav ms-auto gap-4">
-                    <li class="nav-item"><a href="#menu" class="nav-link fw-bold text-white">Menú</a></li>
-                    <li class="nav-item"><a href="#especialidades" class="nav-link fw-bold text-white">Especialidades</a></li>
-                    <li class="nav-item"><a href="#contacto" class="nav-link fw-bold text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="#menu" class="nav-link">CHILAQUILES</a></li>
+                    <li class="nav-item"><a href="#especialidades" class="nav-link">ESPECIALIDADES</a></li>
+                    <li class="nav-item"><a href="#bebidas" class="nav-link">BEBIDAS</a></li>
+                    <li class="nav-item"><a href="#contacto" class="nav-link btn-order">PIDE AQUÍ</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <header id="home" class="hero">
-        <div class="container hero-content text-center mt-3">
-            <div class="mx-auto mb-4" style="max-width: 380px;">
-                <img src="DeLACosta.png" class="hero-logo" alt="">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center">
+            <img src="DeLACosta.png" class="hero-logo mb-4 imagen-contorno" alt="Chilaquería Logo">
+            <h1 class="display-1 fw-black text-uppercase">Chilaquería<br><span class="text-orange">De LACosta</span></h1>
+            <p class="fs-4 fw-light mb-5 letter-spacing-2"> Crema, queso y cebolla • Salsa a elegir</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#menu" class="btn btn-orange btn-lg rounded-0 px-5 py-3">VER MENÚ</a>
             </div>
-            <h1 class="display-1 fw-bold text-white mb-3">CHILAQUILES DE LACOSTA</h1>
-            <p class="fs-3 mb-5">Salsa a elegir • Crema, queso y cebolla</p>
-            <a href="#menu" class="btn btn-orange btn-lg px-5 py-3 rounded-5 fw-bold">Ver menú completo</a>
         </div>
     </header>
 
-    <!-- Chilaquiles -->
+    <section class="marquee-section bg-orange text-black overflow-hidden py-3">
+        <div class="marquee-container">
+            <div class="marquee-content fw-black fs-2 text-uppercase italic">
+                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+                <span>VERDE • ROJA •MOLE • HABANERO • FRIJOLES CON CHIPOTLE • SUIZA CREMOSA • </span>
+            </div>
+        </div>
+    </section>
+
     <section id="menu" class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Chilaquiles</h2>
+        <div class="container py-5">
+            <div class="header-box mb-5">
+                <h2 class="section-title">CHILAQUILES</h2>
+                <div class="title-line"></div>
+            </div>
+            
             <div class="row g-4">
-                <div v-for="(item, i) in chilaquiles" :key="i" class="col-md-6 col-lg-3 menu-card"
-                     :style="{ animationDelay: (i * 120) + 'ms' }">
-                    <div class="card-inner">
-                        <img :src="item.img" class="card-img" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="fw-bold">{{ item.name }}</h5>
-                            <p class="price">${{ item.price }}</p>
+                <div v-for="(item, i) in chilaquiles" :key="i" class="col-md-6 col-lg-4">
+                    <div class="menu-item-card">
+                        <div class="img-container">
+                            <img :src="item.img" class="img-fluid" alt="">
+                            <div class="price-tag">${{ item.price }}</div>
+                        </div>
+                        <div class="p-4 border-start border-orange border-4 bg-dark-soft">
+                            <h4 class="fw-bold text-uppercase mb-1">{{ item.name }}</h4>
+                            <p class="text-muted small mb-0">{{ item.description || 'Incluye totopos crujientes y proteína a elegir.' }}</p>
                         </div>
                     </div>
                 </div>
@@ -73,19 +77,21 @@
         </div>
     </section>
 
-    <!-- Especialidades -->
-    <section id="especialidades" class="py-5 bg-black">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Especialidades</h2>
+    <section id="especialidades" class="py-5 bg-black-gradient">
+        <div class="container py-5">
+            <div class="header-box mb-5 text-end">
+                <h2 class="section-title">ESPECIALIDADES</h2>
+                <div class="title-line ms-auto"></div>
+            </div>
+
             <div class="row g-4">
-                <div v-for="(item, i) in especialidades" :key="i" class="col-md-6 col-lg-3 menu-card"
-                     :style="{ animationDelay: (i * 120) + 'ms' }">
-                    <div class="card-inner">
-                        <img :src="item.img" class="card-img" alt="">
-                        <div class="card-body text-center">
-                            <h5 class="fw-bold">{{ item.name }}</h5>
-                            <small class="text-muted">{{ item.subtitle }}</small>
-                            <p class="price">${{ item.price }}</p>
+                <div v-for="(item, i) in especialidades" :key="i" class="col-md-6">
+                    <div class="special-card d-flex align-items-center">
+                        <img :src="item.img" class="special-img" alt="">
+                        <div class="ps-4">
+                            <h3 class="text-orange fw-black mb-0">{{ item.name }}</h3>
+                            <p class="text-white-50 mb-2">{{ item.subtitle }}</p>
+                            <span class="fs-4 fw-bold">${{ item.price }}</span>
                         </div>
                     </div>
                 </div>
@@ -93,28 +99,30 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contacto" class="footer py-5 bg-dark">
-        <div class="container">
-            <div class="row align-items-center text-center text-lg-start">
-                <div class="col-lg-4">
-                    <img src="DeLACosta.png" alt="">
+    <footer id="contacto" class="footer border-top border-orange border-4">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-4 text-center text-lg-start">
+                    <img src="DeLACosta.png" width="180" class="mb-4 imagen-con-contorno" alt="">
+                    <p class="text-muted">La auténtica experiencia de chilaquiles en la costa. Calidad, sabor y tradición en cada bocado.</p>
                 </div>
-                <div class="col-lg-4">
-                    <p class="fw-bold">Síguenos en</p>
-                    <p>📘 Chilaqueria De LA costa &nbsp;&nbsp; @chilaqueriadelacosta</p>
-                    <img src="https://via.placeholder.com/130x130/ffffff/111111?text=QR" alt="QR" class="rounded-3 mt-3 shadow">
+                <div class="col-lg-4 text-center">
+                    <h5 class="text-orange fw-bold mb-4">SÍGUENOS</h5>
+                    <div class="d-flex justify-content-center gap-4 fs-3">
+                        <p>📘 @chilaqueriadelacosta</p>
+                    </div>
+                    <img src="qr-placeholder.png" alt="QR" class="qr-code mt-3">
                 </div>
-                <div class="col-lg-4">
-                    <p class="lead">¡Nos encantaría recibir tus comentarios!</p>
-                    <small>Chilaquería De La Costa • ACA • MX</small>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <h5 class="text-orange fw-bold mb-4">UBICACIÓN</h5>
+                    <p>Acapulco, Guerrero, México</p>
+                    <p class="text-muted small">Chilaquería De La Costa • 2024</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
