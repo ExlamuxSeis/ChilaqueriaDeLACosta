@@ -14,6 +14,11 @@ createApp({
                 { name: "Tacos Acorazados", subtitle: "Orden de 3", price: 100, img: "https://picsum.photos/id/201/600/400" },
                 { name: "Enchiladas", subtitle: "4 piezas", price: 100, img: "https://picsum.photos/id/292/600/400" },
                 { name: "Menú Comida", subtitle: "A partir de 1:00 PM", price: 160, img: "https://picsum.photos/id/870/600/400" }
+            ],
+            bebidas: [
+                { name: "Aguas Frescas", price: 35, subtitle: "Limonada, Horchata o Jamaica", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=500" },
+                { name: "Refrescos", price: 30, subtitle: "Variedad de la familia Coca-Cola", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=500" },
+                { name: "Café Americano", price: 25, subtitle: "Grano recién molido", img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=500" }
             ]
         }
     }

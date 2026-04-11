@@ -48,7 +48,7 @@
                 Crema, queso y cebolla • Salsa a elegir
             </p>
             <div class="d-grid d-sm-flex justify-content-sm-center gap-3 px-4 px-sm-0">
-                <a href="#menu" class="btn btn-orange btn-lg rounded-0 px-5 py-3 fw-bold">VER MENÚ</a>
+                <a href="https://cutt.ly/chilaqueriadelacosta" class="btn btn-orange btn-lg rounded-0 px-5 py-3 fw-bold">VER MENÚ</a>
             </div>
         </div>
     </header>
@@ -63,46 +63,88 @@
         </div>
     </section>
 
-    <section id="menu" class="py-5 bg-black">
-        <div class="container py-lg-5">
-            <div class="header-box mb-4 mb-lg-5 text-center text-lg-start px-3">
-                <h2 class="section-title fw-black">CHILAQUILES</h2>
-                <div class="title-line mx-auto mx-lg-0"></div>
-            </div>
-            
-            <div class="row g-3 g-lg-4 px-3 px-lg-0">
-                <div v-for="(item, i) in chilaquiles" :key="i" class="col-12 col-md-6 col-lg-4">
-                    <div class="menu-item-card h-100">
-                        <div class="img-container">
-                            <img :src="item.img" class="img-fluid w-100" alt="">
-                            <div class="price-tag">${{ item.price }}</div>
+<section id="menu" class="py-5 bg-black">
+    <div class="container py-lg-5">
+        <div class="header-box mb-4 mb-lg-5 text-center text-lg-start px-3">
+            <span class="text-orange fw-bold letter-spacing-2 mb-2 d-block small">NUESTROS CLÁSICOS</span>
+            <h2 class="section-title fw-black text-uppercase">Chilaquiles</h2>
+            <div class="title-line mx-auto mx-lg-0"></div>
+        </div>
+        
+        <div class="row g-4 px-3 px-lg-0">
+            <div v-for="(item, i) in chilaquiles" :key="i" class="col-12 col-md-6 col-lg-4">
+                <div class="menu-item-card h-100 shadow-sm">
+                    <div class="img-container">
+                        <img :src="item.img" class="img-fluid w-100" alt="">
+                        <div class="img-overlay"></div>
+                        <div class="price-tag">${{ item.price }}</div>
+                    </div>
+                    
+                    <div class="card-body-custom p-4 bg-dark-grey">
+                        <div class="d-flex align-items-center mb-2">
+                            <h4 class="fw-bold text-uppercase m-0 fs-5 fs-lg-4 text-white">{{ item.name }}</h4>
+                            <div class="ms-auto hot-badge" v-if="item.price > 140"></div>
                         </div>
-                        <div class="p-3 p-lg-4 border-start border-orange border-4 bg-dark-grey">
-                            <h4 class="fw-bold text-uppercase mb-1 fs-5 fs-lg-4">{{ item.name }}</h4>
-                            <p class="text-muted small mb-0">{{ item.description || 'Incluye totopos crujientes y proteína.' }}</p>
+                        <p class="text-secondary small mb-0 lh-base">
+                            {{ item.description || 'Totopos bañados en salsa artesanal, servidos con crema, queso y cebolla.' }}
+                        </p>
+                        <div class="mt-3 d-flex gap-1">
+                            <span class="dot-orange"></span>
+                            <span class="dot-orange opacity-50"></span>
+                            <span class="dot-orange opacity-25"></span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="especialidades" class="py-5 bg-black-gradient">
+<section id="especialidades" class="py-5 bg-black-gradient">
+    <div class="container py-lg-5">
+        <div class="header-box mb-5 text-center text-lg-end px-3">
+            <h2 class="section-title fw-black text-uppercase">Especialidades <span class="text-orange">De la Casa</span></h2>
+            <div class="title-line mx-auto ms-lg-auto me-lg-0"></div>
+        </div>
+
+        <div class="row g-4 px-3 px-lg-0">
+            <div v-for="(item, i) in especialidades" :key="i" class="col-12 col-lg-6">
+                <div class="special-card d-flex flex-column flex-sm-row align-items-center p-4 h-100">
+                    <div class="special-img-container">
+                        <img :src="item.img" class="special-img" :alt="item.name">
+                        <div class="special-badge">★</div>
+                    </div>
+                    
+                    <div class="ps-sm-4 text-center text-sm-start mt-3 mt-sm-0 flex-grow-1">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h3 class="text-orange fw-black mb-0 fs-4 fs-lg-3 text-uppercase">{{ item.name }}</h3>
+                            <span class="special-price">${{ item.price }}</span>
+                        </div>
+                        <p class="text-white-50 mb-0 small ls-1 italic">{{ item.subtitle }}</p>
+                        <div class="special-divider mt-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="bebidas" class="py-5 bg-black">
         <div class="container py-lg-5">
-            <div class="header-box mb-5 text-center text-lg-end px-3">
-                <h2 class="section-title fw-black">ESPECIALIDADES</h2>
-                <div class="title-line mx-auto ms-lg-auto me-lg-0"></div>
+            <div class="header-box mb-5 text-center px-3">
+                <h2 class="section-title fw-black">BEBIDAS</h2>
+                <div class="title-line mx-auto"></div>
             </div>
 
-            <div class="row g-3 g-lg-4 px-3 px-lg-0">
-                <div v-for="(item, i) in especialidades" :key="i" class="col-12 col-lg-6">
-                    <div class="special-card d-flex flex-column flex-sm-row align-items-center p-3 h-100">
-                        <img :src="item.img" class="special-img mb-3 mb-sm-0" alt="">
-                        <div class="ps-sm-4 text-center text-sm-start">
-                            <h3 class="text-orange fw-black mb-0 fs-4 fs-lg-3">{{ item.name }}</h3>
-                            <p class="text-white-50 mb-2 small">{{ item.subtitle }}</p>
-                            <span class="fs-4 fw-bold text-white">${{ item.price }}</span>
+            <div class="row g-4 justify-content-center">
+                <div v-for="(item, i) in bebidas" :key="i" class="col-12 col-md-4">
+                    <div class="drink-card p-3 h-100 text-center">
+                        <div class="drink-img-wrapper mb-3">
+                            <img :src="item.img" class="drink-img" :alt="item.name">
                         </div>
+                        <h4 class="text-white fw-bold text-uppercase mb-1">{{ item.name }}</h4>
+                        <p class="text-secondary small mb-3">{{ item.subtitle }}</p>
+                        <div class="drink-price">${{ item.price }}</div>
                     </div>
                 </div>
             </div>
