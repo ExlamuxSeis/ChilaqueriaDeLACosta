@@ -23,3 +23,24 @@ createApp({
         }
     }
 }).mount('#app');
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cursor = document.getElementById('pro-chilaquil-cursor');
+
+    // Movimiento fluido
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+    });
+
+    // Acción de partirse (Click)
+    document.addEventListener('mousedown', () => cursor.classList.add('clicked'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('clicked'));
+
+    // Feedback en enlaces y botones
+    const links = document.querySelectorAll('a, button, .btn');
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+});
