@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chilaquería De La Costa • ACA • MX</title>
+    <title>Chilaquería De LaCosta • ACA • MX</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -153,6 +153,56 @@
             </div>
         </div>
     </section>
+    <section id="hacer-pedido" class="py-5 bg-dark-grey text-white">
+    <div class="container">
+        <h2 class="text-orange fw-black text-center mb-4">ARMA TU PEDIDO</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-8 bg-black p-4 border-orange">
+                
+                <div class="mb-4">
+                    <label class="form-label fw-bold">1. ¿QUÉ VAS A COMER?</label>
+                    <select v-model="order.base" class="form-select bg-dark text-white border-secondary">
+                        <option value="" disabled>Selecciona una opción</option>
+                        <option v-for="item in chilaquiles" :value="item.name">{{ item.name }} - ${{ item.price }}</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">2. ¿QUÉ SALSA LE PONEMOS?</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button v-for="salsa in ['Verde', 'Roja', 'Habanero', 'Suiza']" 
+                                @click="order.salsa = salsa"
+                                :class="['btn btn-sm', order.salsa === salsa ? 'btn-orange' : 'btn-outline-secondary']">
+                            {{ salsa }}
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">3. ¿QUÉ VAS A TOMAR?</label>
+                    <select v-model="order.bebida" class="form-select bg-dark text-white border-secondary">
+                        <option value="Ninguna">Sin bebida</option>
+                        <option v-for="b in bebidas" :value="b.name">{{ b.name }}</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label small text-orange fw-bold">¿ALGUNA NOTA ESPECIAL?</label>
+                    <textarea v-model="order.extra" 
+                            class="form-control bg-dark text-white border-secondary" 
+                            placeholder="Ej: Sin cebolla, extra salsa..." 
+                            rows="2"></textarea>
+                </div>
+
+                <button @click="sendWhatsApp" 
+                        class="btn btn-orange w-100 py-3 fw-black"
+                        :disabled="!order.base || !order.salsa">
+                    ENVIAR PEDIDO POR WHATSAPP
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer id="contacto" class="footer border-top border-orange border-4 bg-black">
     <div class="container py-5 px-4 px-lg-0">
